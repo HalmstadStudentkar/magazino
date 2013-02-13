@@ -1,0 +1,54 @@
+﻿================
+MAGAZINO THEME
+================
+Copyright (c) 2012 by WPThemes NZ (http://wpthemes.co.nz/)
+This Theme is distributed under the terms of the GNU GPL.
+
+===========
+ABOUT Theme
+=========== 
+It's a fun and functional theme perfect for the personal blogger. Featuring a traditional layout it supports custom menus and is widget ready.
+
+This theme is compatible with Wordpress Version 3.4 and above and it supports the new theme customization API (https://codex.wordpress.org/Theme_Customization_API).
+
+All the image graphics and icons bundled with this theme are created by the author and licensed under the GPL.
+
+Google webfonts used: Passion One and Fjalla One
+
+Supported browsers: Firefox, Opera, Chrome, Safari and IE9+. Some css3 styles like shadows and rounder corners are not working on IE8.
+
+For free themes support, please contact us http://wpthemes.co.nz/contact/
+
+
+============================================
+This theme uses Toolbox as a theme framework
+============================================
+ * Toolbox (http://wordpress.org/extend/themes/toolbox)
+ * Copyright (c) Automattic (http://automattic.com)
+ * Available under the terms of GNU GPL.
+ 
+ 
+======================================
+This theme uses Bones as a design tool
+======================================
+ * Bones (http://themble.com/bones)
+ * Copyright (c) Eddie Machado (http://eddiemachado.com/)
+ * This is totally free and under WTFPL license (Please read http://themble.com/bones/ for more information)
+
+
+=====================================
+This theme is bundled with Modernizr 
+=====================================
+ * Modernizr v2.6.2 (www.modernizr.com)
+ * Modernizr is a JavaScript library that detects HTML5 and CSS3 features in the user’s browser.
+ * Copyright (c) Faruk Ates, Paul Irish, Alex Sexton
+ * Available under the BSD and MIT licenses: www.modernizr.com/license/
+
+
+=================================
+This theme is bundled with Cycle2
+=================================
+ * Cycle2 v20130202 (http://jquery.malsup.com/cycle2/)
+ * Cycle2 is a versatile slideshow plugin for jQuery built around ease-of-use. It supports a declarative initialization style that allows full customization without any scripting.
+ * Copyright © 2012 M. Alsup (https://github.com/malsup)
+ * The Cycle2 plugin is dual licensed under the MIT (http://malsup.github.com/mit-license.txt) and GPL (http://malsup.github.com/gpl-license-v2.txt) licenses.
