@@ -17,7 +17,7 @@
 	
     <div id="search-box-wrap">
         <div id="search-box">
-           <div id="close-x"><?php _e( 'x', 'wpthemesconz' ); ?></div>
+           <div id="close-x"><?php _e( 'x', 'magazino' ); ?></div>
            <?php get_search_form(); ?>
         </div>
     </div>
@@ -26,9 +26,9 @@
       <div id="inner-header" class="clearfix">
 		<hgroup id="site-heading">
         	<?php if ( get_theme_mod( 'magazino_logo' ) ) : ?>
-            <div id="site-logo"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo get_theme_mod( 'magazino_logo' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a></div>
+            <div id="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_theme_mod( 'magazino_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a></div>
             <?php else : ?>
-			<div id="site-title"><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
+			<div id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
             <?php endif; ?>
 		</hgroup>
         

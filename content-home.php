@@ -16,7 +16,7 @@
     
     <div class="go-button"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php _e('&#9654;', 'magazino'); ?></a></div>
     
-    <div class="post-box-img"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'full' ); ?></a></div> 
+    <div class="post-box-img"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( array(250, 250), array( 'style' => 'position:absolute', 'onload' => 'thumb_img_onload(this)' ) ); ?></a></div> 
 
 </article><!-- #post-<?php the_ID(); ?> -->
     

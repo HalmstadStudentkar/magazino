@@ -26,7 +26,7 @@
                     <div class="slides">
                       <div id="post-<?php the_ID(); ?>" <?php post_class('post-theme'); ?>>
                          <?php if ( has_post_thumbnail()) : ?>
-                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( array(1000, 640) ); ?></a></div>
+                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( array(1000, 640), array( 'style' => 'position:absolute', 'onload' => 'feat_img_onload(this)' ) ); ?></a></div>
                          <?php else : ?>
                             <div class="slide-noimg"><?php _e('No featured image set for this post.', 'magazino') ?></div>
                          <?php endif; ?>

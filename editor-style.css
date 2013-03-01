@@ -31,6 +31,51 @@ h5 {
 
 .read-more {}
 
+table { 
+	border-collapse: collapse; 
+	border-spacing: 0; 
+}
+
+td, 
+td img { 
+	vertical-align: top; 
+}
+
+table { 
+	width: 100%; 
+}
+
+table th { 
+	border-bottom: 2px solid #848484; 
+	text-align: left; 
+}
+
+table td { 
+	border-bottom: 1px solid #d0d0d0; 
+	padding: 5px; 
+}
+
+dl { 
+	margin: 1.75em 0 1.75em; 
+}
+
+dt { 
+	background-color: none;
+	font-style: italic; 
+	margin-top: 1.25em; 
+	font-size: 1.13em; 
+	font-weight: 700; 
+	border-bottom: 1px solid #999; 
+}
+
+dd { 
+	font-style: italic; 
+	font-size: .85em; 
+	margin-top: 1em; 
+	line-height: 1.6em; 
+}
+
+
 ul, ol, table, dl { margin: 1.5em 0; }
 ul, ol { list-style-position:outside; line-height:1.5; margin-left: 2.2em; margin-right: 2.2em; }
 li { margin-bottom: 0.75em; }
@@ -39,10 +84,7 @@ ol li { list-style-type: decimal; }
 			
 blockquote { font-style:italic; line-height:1.6em; margin: 1.5em 2.2em; }
 blockquote:before { font-family:Georgia, serif; content:open-quote; font-size:2.75em; text-indent:-.8em; margin-top:.1em; float:left; opacity:.3; }
-			
-dl { margin:1.75em 0 1.75em; }
-dt { font-style:italic; margin-top:1.25em; font-size:1.13em; font-weight:700; border-bottom:1px solid #999; background:#DDD; }
-dd { font-style:italic; font-size:.85em; margin-top:1em; line-height:1.6em; }
+
 			
 video { display: block; margin: 1.5em 0; max-width: 100%; }
 object { display: block; margin: 1.5em 0; max-width: 100%; }
