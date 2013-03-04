@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Magazino\n"
-"POT-Creation-Date: 2013-02-13 11:22+0800\n"
-"PO-Revision-Date: 2013-03-01 09:43+0800\n"
+"POT-Creation-Date: 2013-03-04 14:48+0800\n"
+"PO-Revision-Date: 2013-03-04 14:48+0800\n"
 "Last-Translator: ed cardinal <lizardking67@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr ""
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/archive.php:53
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/author.php:58
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/category.php:49
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:117
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:130
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/search.php:39
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/tag.php:52
 msgid "Nothing Found"
@@ -68,7 +68,7 @@ msgstr ""
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/archive.php:57
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/author.php:62
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/category.php:53
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:121
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:134
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/tag.php:56
 msgid ""
 "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
@@ -115,7 +115,7 @@ msgstr ""
 
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/content-archive.php:17
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/content-home.php:17
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:48
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:61
 msgid "&#9654;"
 msgstr ""
 
@@ -332,7 +332,7 @@ msgid "Enter your youtube url"
 msgstr ""
 
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/functions.php:324
-msgid "Sidebar Main"
+msgid "Footer Sidebar"
 msgstr ""
 
 #: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/functions.php:344
@@ -482,20 +482,20 @@ msgstr ""
 msgid "Both comments and trackbacks are currently closed."
 msgstr ""
 
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:31
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:62
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:41
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:75
 msgid "No featured image set for this post."
 msgstr ""
 
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:47
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:60
 msgid "Previous"
 msgstr ""
 
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:47
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:60
 msgid "&#9664;"
 msgstr ""
 
-#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:48
+#: C:\xampp\htdocs\wordpress\wp-content\themes\magazino/index.php:61
 msgid "Next"
 msgstr ""
 

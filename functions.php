@@ -321,7 +321,7 @@ add_filter( 'wp_page_menu_args', 'magazino_page_menu_args' );
  */
 function magazino_widgets_init() {
 	register_sidebar( array(
-		'name' => __( 'Sidebar Main', 'magazino' ),
+		'name' => __( 'Footer Sidebar', 'magazino' ),
 		'id' => 'sidebar-1',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' => "</aside>",

@@ -7,7 +7,7 @@ This Theme is distributed under the terms of the GNU GPL.
 ===========
 ABOUT Theme
 =========== 
-It's a fun and functional theme perfect for the personal blogger. Featuring a traditional layout it supports custom menus and is widget ready.
+Magazino is a simple and flexible theme ideally suited to magazine style blogs. It is responsive to browser size so should look good on any screen. It supports all the usual WordPress features like custom menus and widgets, and also makes it easy to customize with your own logo and you can set the main color scheme to any color you want with the built in color picker.
 
 This theme is compatible with Wordpress Version 3.4 and above and it supports the new theme customization API (https://codex.wordpress.org/Theme_Customization_API).
 
@@ -15,10 +15,17 @@ All the image graphics and icons bundled with this theme are created by the auth
 
 Google webfonts used: Passion One and Fjalla One
 
-Supported browsers: Firefox, Opera, Chrome, Safari and IE9+. Some css3 styles like shadows and rounder corners are not working on IE8.
+Supported browsers: Firefox, Opera, Chrome, Safari and IE9+ (Some css3 styles like shadows and rounded corners are not supported by IE8 and below).
 
 For free themes support, please contact us http://wpthemes.co.nz/contact/
 
+IMPORTANT NOTES: 
+ * Any post set as "Sticky" will be automatically added to the homepage slider.
+ * The homepage slider is only activated if there is at least 2 featured/sticky posts.
+ * For the slider featured image, the ideal width is at least 1000px and the ideal height is at least 300px. Any part of the featured image that exceeds this dimension will be automatically cropped.
+ * The ideal size for the featured image on the homepage grid thumbnails is 300x300 pixels.
+ * If there is no featured image set for a post, the first image found will be used instead. This works both for the slider and the grid thumbnails.
+ 
 
 ============================================
 This theme uses Toolbox as a theme framework
@@ -52,3 +59,18 @@ This theme is bundled with Cycle2
  * Cycle2 is a versatile slideshow plugin for jQuery built around ease-of-use. It supports a declarative initialization style that allows full customization without any scripting.
  * Copyright © 2012 M. Alsup (https://github.com/malsup)
  * The Cycle2 plugin is dual licensed under the MIT (http://malsup.github.com/mit-license.txt) and GPL (http://malsup.github.com/gpl-license-v2.txt) licenses.
+ 
+
+=================================
+CHANGELOG
+=================================
+
+Version 1.0.2
+ * updated readme.txt, added info on homepage slider and image dimension requirements
+ * the first image used in any post will now be used as the thumbnail image on homepage if no featured image is found
+
+Version 1.0.1
+ * added script to the thumbnail resizing on homepage
+
+Version 1.0
+ * First public release
