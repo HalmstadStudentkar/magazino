@@ -19,7 +19,27 @@
                   
                   <?php if ($countPosts > 1) : ?>
                   <div id="loading"></div>
-                  <div class="cycle-slideshow" data-cycle-fx="scrollHorz" data-cycle-slides="> div" data-cycle-timeout="0" data-cycle-prev="#sliderprev" data-cycle-next="#slidernext">
+                  <div class="cycle-slideshow" <?php 
+				  	if ( get_theme_mod('magazino_slider_effect') ) {
+						echo 'data-cycle-fx="' . wp_kses_post( get_theme_mod('magazino_slider_effect') ) . '" data-cycle-tile-count="10"';
+					} else {
+						echo 'data-cycle-fx="scrollHorz"';
+					}
+				  ?> data-cycle-slides="> div.slides" <?php
+                  	if ( get_theme_mod('magazino_slider_timeout') ) {
+						$slider_timeout = wp_kses_post( get_theme_mod('magazino_slider_timeout') );
+						if ( $slider_timeout != 0 || $slider_timeout != '' ) {
+							echo 'data-cycle-timeout="' . $slider_timeout . '000" data-cycle-pause-on-hover="true"';
+						} else {
+							echo 'data-cycle-timeout="0"';
+						}
+					} else {
+						echo 'data-cycle-timeout="0"';
+					}
+				  ?> data-cycle-prev="#sliderprev" data-cycle-next="#slidernext">
+                  	<?php if ( get_theme_mod('magazino_slider_pager') ) : ?>
+                  	<div class="cycle-pager"></div>
+                    <?php endif; ?>
                     <?php /* Start the Loop */ ?>
                     <?php while ( $fPosts->have_posts() ) : $fPosts->the_post(); ?>
                     

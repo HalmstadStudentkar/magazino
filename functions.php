@@ -209,7 +209,49 @@ function magazino_theme_customizer( $wp_customize ) {
 		'section'  => 'magazino_social_section',
 		'settings' => 'magazino_youtube',
 	) ) );
-
+	
+	/* slider options */
+	
+	$wp_customize->add_section( 'magazino_slider_section' , array(
+		'title'       => __( 'Slider Options', 'magazino' ),
+		'priority'    => 33,
+		'description' => __( 'Adjust the behavior of the image slider.', 'magazino' ),
+	) );
+	
+	$wp_customize->add_setting( 'magazino_slider_effect', array(
+		'default' => 'scrollHorz',
+		'capability' => 'edit_theme_options',
+	));
+	
+	 $wp_customize->add_control( 'effect_select_box', array(
+		'settings' => 'magazino_slider_effect',
+		'label' => __( 'Select Effect:', 'magazino' ),
+		'section' => 'magazino_slider_section',
+		'type' => 'select',
+		'choices' => array(
+			'scrollHorz' => 'Horizontal (Default)',
+			'scrollVert' => 'Vertical',
+			'tileSlide' => 'Tile Slide',
+			'tileBlind' => 'Blinds',
+		),
+	));
+	
+	$wp_customize->add_setting( 'magazino_slider_timeout' );
+	
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_slider_timeout', array(
+		'label'    => __( 'Autoplay Speed in Seconds (0 for Manual)', 'magazino' ),
+		'section'  => 'magazino_slider_section',
+		'settings' => 'magazino_slider_timeout',
+	) ) );
+	
+	$wp_customize->add_setting( 'magazino_slider_pager' );
+	
+	 $wp_customize->add_control('enable_pager', array(
+		'settings' => 'magazino_slider_pager',
+		'label' => __('Enable pager', 'magazino'),
+		'section' => 'magazino_slider_section',
+		'type' => 'checkbox',
+	));
 
 }
 add_action('customize_register', 'magazino_theme_customizer');
@@ -234,7 +276,8 @@ function magazino_apply_color() {
 		.post_content ul li:before,
 		.post_content ol li:before,
 		.colortxt,
-		.commentlist .bypostauthor > article > footer > .vcard cite.fn { 
+		.commentlist .bypostauthor > article > footer > .vcard cite.fn,
+		.cycle-pager span.cycle-pager-active { 
 			color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
 		}
 		
@@ -582,6 +625,8 @@ add_action('wp_enqueue_scripts', 'magazino_modernizr_script');
 
 function magazino_custom_scripts() {
 	wp_enqueue_script( 'magazino_cycle_js', get_template_directory_uri() . '/library/js/jquery.cycle2.min.js', array( 'jquery' ), '20130202' );
+	wp_enqueue_script( 'magazino_cycle_tile_js', get_template_directory_uri() . '/library/js/jquery.cycle2.tile.min.js', array( 'jquery' ), '20121120' );
+	wp_enqueue_script( 'magazino_cycle_scrollvert_js', get_template_directory_uri() . '/library/js/jquery.cycle2.scrollVert.min.js', array( 'jquery' ), '20121120' );
 	wp_enqueue_script( 'magazino_custom_js', get_template_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '1.0.0' );
 	wp_enqueue_style( 'magazino_style', get_stylesheet_uri() );
 }

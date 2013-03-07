@@ -64,6 +64,10 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.3
+ * fixed the bug related to the alignment and resizing of featured images on the slider
+ * fixed pixelated thumbnails on homepage posts
+ * added setting options for the image slider in the theme customizer
 
 Version 1.0.2
  * updated readme.txt, added info on homepage slider and image dimension requirements
