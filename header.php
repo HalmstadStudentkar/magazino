@@ -24,13 +24,13 @@
 
 	<header id="branding" role="banner">
       <div id="inner-header" class="clearfix">
-		<hgroup id="site-heading">
+		<div id="site-heading">
         	<?php if ( get_theme_mod( 'magazino_logo' ) ) : ?>
             <div id="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><img src="<?php echo esc_url( get_theme_mod( 'magazino_logo' ) ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /></a></div>
             <?php else : ?>
 			<div id="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
             <?php endif; ?>
-		</hgroup>
+		</div>
         
         <div id="social-media" class="clearfix">
         
@@ -56,6 +56,22 @@
             
 			<?php if ( get_theme_mod( 'magazino_youtube' ) ) : ?>
             <a href="<?php echo esc_url( get_theme_mod( 'magazino_youtube' ) ); ?>" class="social-yt" title="<?php echo esc_url( get_theme_mod( 'magazino_youtube' ) ); ?>"><?php _e('Youtube', 'magazino') ?></a>
+            <?php endif; ?>
+            
+            <?php if ( get_theme_mod( 'magazino_tumblr' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_tumblr' ) ); ?>" class="social-tu" title="<?php echo esc_url( get_theme_mod( 'magazino_tumblr' ) ); ?>"><?php _e('Tumblr', 'magazino') ?></a>
+            <?php endif; ?>
+            
+            <?php if ( get_theme_mod( 'magazino_instagram' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_instagram' ) ); ?>" class="social-in" title="<?php echo esc_url( get_theme_mod( 'magazino_instagram' ) ); ?>"><?php _e('Instagram', 'magazino') ?></a>
+            <?php endif; ?>
+            
+            <?php if ( get_theme_mod( 'magazino_flickr' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_flickr' ) ); ?>" class="social-fl" title="<?php echo esc_url( get_theme_mod( 'magazino_flickr' ) ); ?>"><?php _e('Instagram', 'magazino') ?></a>
+            <?php endif; ?>
+            
+            <?php if ( get_theme_mod( 'magazino_vimeo' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_flickr' ) ); ?>" class="social-vi" title="<?php echo esc_url( get_theme_mod( 'magazino_vimeo' ) ); ?>"><?php _e('Vimeo', 'magazino') ?></a>
             <?php endif; ?>
             
             <div id="search-icon"></div>

@@ -68,52 +68,55 @@ add_action( 'after_setup_theme', 'magazino_setup' );
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
-function magazino_content_width() {
-	global $content_width;
-	if (!isset($content_width))
-		$content_width = 550; /* pixels */
-}
+if ( ! function_exists( 'magazino_content_width' ) ) :
+	function magazino_content_width() {
+		global $content_width;
+		if (!isset($content_width))
+			$content_width = 550; /* pixels */
+	}
+endif;
 add_action( 'after_setup_theme', 'magazino_content_width' );
 
 
 /**
  * Title filter 
  */
-function magazino_filter_wp_title( $old_title, $sep, $sep_location ) {
-
-	$site_name = get_bloginfo( 'name' );
-	$site_description = get_bloginfo( 'description' );
-	// add padding to the sep
-	$ssep = ' ' . $sep . ' ';
+if ( ! function_exists( 'magazino_filter_wp_title' ) ) :
+	function magazino_filter_wp_title( $old_title, $sep, $sep_location ) {
 	
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		return $site_name . ' | ' . $site_description;
-	} else {
-		// find the type of index page this is
-		if( is_category() ) $insert = $ssep . __( 'Category', 'magazino' );
-		elseif( is_tag() ) $insert = $ssep . __( 'Tag', 'magazino' );
-		elseif( is_author() ) $insert = $ssep . __( 'Author', 'magazino' );
-		elseif( is_year() || is_month() || is_day() ) $insert = $ssep . __( 'Archives', 'magazino' );
-		else $insert = NULL;
-		 
-		// get the page number we're on (index)
-		if( get_query_var( 'paged' ) )
-		$num = $ssep . __( 'Page ', 'magazino' ) . get_query_var( 'paged' );
-		 
-		// get the page number we're on (multipage post)
-		elseif( get_query_var( 'page' ) )
-		$num = $ssep . __( 'Page ', 'magazino' ) . get_query_var( 'page' );
-		 
-		// else
-		else $num = NULL;
-		 
-		// concoct and return new title
-		return $site_name . $insert . $old_title . $num;
+		$site_name = get_bloginfo( 'name' );
+		$site_description = get_bloginfo( 'description' );
+		// add padding to the sep
+		$ssep = ' ' . $sep . ' ';
 		
+		if ( $site_description && ( is_home() || is_front_page() ) ) {
+			return $site_name . ' | ' . $site_description;
+		} else {
+			// find the type of index page this is
+			if( is_category() ) $insert = $ssep . __( 'Category', 'magazino' );
+			elseif( is_tag() ) $insert = $ssep . __( 'Tag', 'magazino' );
+			elseif( is_author() ) $insert = $ssep . __( 'Author', 'magazino' );
+			elseif( is_year() || is_month() || is_day() ) $insert = $ssep . __( 'Archives', 'magazino' );
+			else $insert = NULL;
+			 
+			// get the page number we're on (index)
+			if( get_query_var( 'paged' ) )
+			$num = $ssep . __( 'Page ', 'magazino' ) . get_query_var( 'paged' );
+			 
+			// get the page number we're on (multipage post)
+			elseif( get_query_var( 'page' ) )
+			$num = $ssep . __( 'Page ', 'magazino' ) . get_query_var( 'page' );
+			 
+			// else
+			else $num = NULL;
+			 
+			// concoct and return new title
+			return $site_name . $insert . $old_title . $num;
+			
+		}
+	
 	}
-
-}
-
+endif;
 // call our custom wp_title filter, with normal (10) priority, and 3 args
 add_filter( 'wp_title', 'magazino_filter_wp_title', 10, 3 );
 
@@ -121,203 +124,241 @@ add_filter( 'wp_title', 'magazino_filter_wp_title', 10, 3 );
 /*******************************************************************
 * These are settings for the Theme Customizer in the admin panel. 
 *******************************************************************/
-function magazino_theme_customizer( $wp_customize ) {
-	
-	$wp_customize->remove_section( 'title_tagline');
-	$wp_customize->remove_section( 'static_front_page' );
-
-
-	/* color scheme option */
-	$wp_customize->add_setting( 'magazino_color_settings', array (
-		'default'	=> '#9dbb41',
-	) );
-	
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'magazino_color_settings', array(
-		'label'    => __( 'Theme Color Scheme', 'magazino' ),
-		'section'  => 'colors',
-		'settings' => 'magazino_color_settings',
-	) ) );
+if ( ! function_exists( 'magazino_theme_customizer' ) ) :
+	function magazino_theme_customizer( $wp_customize ) {
+		
+		$wp_customize->remove_section( 'title_tagline');
+		$wp_customize->remove_section( 'static_front_page' );
 	
 	
-	/* logo option */
-	$wp_customize->add_section( 'magazino_logo_section' , array(
-		'title'       => __( 'Site Logo', 'magazino' ),
-		'priority'    => 31,
-		'description' => __( 'Upload a logo to replace the default site name in the header', 'magazino' ),
-	) );
+		/* color scheme option */
+		$wp_customize->add_setting( 'magazino_color_settings', array (
+			'default'	=> '#9dbb41',
+		) );
+		
+		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'magazino_color_settings', array(
+			'label'    => __( 'Theme Color Scheme', 'magazino' ),
+			'section'  => 'colors',
+			'settings' => 'magazino_color_settings',
+		) ) );
+		
+		
+		/* logo option */
+		$wp_customize->add_section( 'magazino_logo_section' , array(
+			'title'       => __( 'Site Logo', 'magazino' ),
+			'priority'    => 31,
+			'description' => __( 'Upload a logo to replace the default site name in the header', 'magazino' ),
+		) );
+		
+		$wp_customize->add_setting( 'magazino_logo' );
+		
+		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'magazino_logo', array(
+			'label'    => __( 'Choose your logo (ideal width is 100-300px and ideal height is 40-100px)', 'magazino' ),
+			'section'  => 'magazino_logo_section',
+			'settings' => 'magazino_logo',
+		) ) );
 	
-	$wp_customize->add_setting( 'magazino_logo' );
+		
+		/* social media option */
+		$wp_customize->add_section( 'magazino_social_section' , array(
+			'title'       => __( 'Social Media Icons', 'magazino' ),
+			'priority'    => 32,
+			'description' => __( 'Optional facebook icon in the navigation bar', 'magazino' ),
+		) );
+		
+		$wp_customize->add_setting( 'magazino_facebook' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_facebook', array(
+			'label'    => __( 'Enter your facebook url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_facebook',
+		) ) );
 	
-	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'magazino_logo', array(
-		'label'    => __( 'Choose your logo (ideal width is 100-300px and ideal height is 40-100px)', 'restaurateur' ),
-		'section'  => 'magazino_logo_section',
-		'settings' => 'magazino_logo',
-	) ) );
-
+		$wp_customize->add_setting( 'magazino_twitter' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_twitter', array(
+			'label'    => __( 'Enter your twitter url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_twitter',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_google' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_google', array(
+			'label'    => __( 'Enter your google+ url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_google',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_pinterest' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_pinterest', array(
+			'label'    => __( 'Enter your pinterest url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_pinterest',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_linkedin' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_linkedin', array(
+			'label'    => __( 'Enter your linkedin url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_linkedin',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_youtube' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_youtube', array(
+			'label'    => __( 'Enter your youtube url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_youtube',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_tumblr' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_tumblr', array(
+			'label'    => __( 'Enter your Tumblr url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_tumblr',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_instagram' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_instagram', array(
+			'label'    => __( 'Enter your Instagram url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_instagram',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_flickr' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_flickr', array(
+			'label'    => __( 'Enter your Flickr url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_flickr',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_vimeo' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_vimeo', array(
+			'label'    => __( 'Enter your Vimeo url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_vimeo',
+		) ) );
+		
+		/* slider options */
+		
+		$wp_customize->add_section( 'magazino_slider_section' , array(
+			'title'       => __( 'Slider Options', 'magazino' ),
+			'priority'    => 33,
+			'description' => __( 'Adjust the behavior of the image slider.', 'magazino' ),
+		) );
+		
+		$wp_customize->add_setting( 'magazino_slider_effect', array(
+			'default' => 'scrollHorz',
+			'capability' => 'edit_theme_options',
+		));
+		
+		 $wp_customize->add_control( 'effect_select_box', array(
+			'settings' => 'magazino_slider_effect',
+			'label' => __( 'Select Effect:', 'magazino' ),
+			'section' => 'magazino_slider_section',
+			'type' => 'select',
+			'choices' => array(
+				'scrollHorz' => 'Horizontal (Default)',
+				'scrollVert' => 'Vertical',
+				'tileSlide' => 'Tile Slide',
+				'tileBlind' => 'Blinds',
+			),
+		));
+		
+		$wp_customize->add_setting( 'magazino_slider_timeout' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_slider_timeout', array(
+			'label'    => __( 'Autoplay Speed in Seconds (0 for Manual)', 'magazino' ),
+			'section'  => 'magazino_slider_section',
+			'settings' => 'magazino_slider_timeout',
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_slider_pager' );
+		
+		 $wp_customize->add_control('enable_pager', array(
+			'settings' => 'magazino_slider_pager',
+			'label' => __('Enable pager', 'magazino'),
+			'section' => 'magazino_slider_section',
+			'type' => 'checkbox',
+		));
 	
-	/* social media option */
-	$wp_customize->add_section( 'magazino_social_section' , array(
-		'title'       => __( 'Social Media Icons', 'magazino' ),
-		'priority'    => 32,
-		'description' => __( 'Optional facebook icon in the navigation bar', 'magazino' ),
-	) );
-	
-	$wp_customize->add_setting( 'magazino_facebook' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_facebook', array(
-		'label'    => __( 'Enter your facebook url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_facebook',
-	) ) );
-
-	$wp_customize->add_setting( 'magazino_twitter' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_twitter', array(
-		'label'    => __( 'Enter your twitter url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_twitter',
-	) ) );
-	
-	$wp_customize->add_setting( 'magazino_google' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_google', array(
-		'label'    => __( 'Enter your google+ url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_google',
-	) ) );
-	
-	$wp_customize->add_setting( 'magazino_pinterest' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_pinterest', array(
-		'label'    => __( 'Enter your pinterest url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_pinterest',
-	) ) );
-	
-	$wp_customize->add_setting( 'magazino_linkedin' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_linkedin', array(
-		'label'    => __( 'Enter your linkedin url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_linkedin',
-	) ) );
-	
-	$wp_customize->add_setting( 'magazino_youtube' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_youtube', array(
-		'label'    => __( 'Enter your youtube url', 'magazino' ),
-		'section'  => 'magazino_social_section',
-		'settings' => 'magazino_youtube',
-	) ) );
-	
-	/* slider options */
-	
-	$wp_customize->add_section( 'magazino_slider_section' , array(
-		'title'       => __( 'Slider Options', 'magazino' ),
-		'priority'    => 33,
-		'description' => __( 'Adjust the behavior of the image slider.', 'magazino' ),
-	) );
-	
-	$wp_customize->add_setting( 'magazino_slider_effect', array(
-		'default' => 'scrollHorz',
-		'capability' => 'edit_theme_options',
-	));
-	
-	 $wp_customize->add_control( 'effect_select_box', array(
-		'settings' => 'magazino_slider_effect',
-		'label' => __( 'Select Effect:', 'magazino' ),
-		'section' => 'magazino_slider_section',
-		'type' => 'select',
-		'choices' => array(
-			'scrollHorz' => 'Horizontal (Default)',
-			'scrollVert' => 'Vertical',
-			'tileSlide' => 'Tile Slide',
-			'tileBlind' => 'Blinds',
-		),
-	));
-	
-	$wp_customize->add_setting( 'magazino_slider_timeout' );
-	
-	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_slider_timeout', array(
-		'label'    => __( 'Autoplay Speed in Seconds (0 for Manual)', 'magazino' ),
-		'section'  => 'magazino_slider_section',
-		'settings' => 'magazino_slider_timeout',
-	) ) );
-	
-	$wp_customize->add_setting( 'magazino_slider_pager' );
-	
-	 $wp_customize->add_control('enable_pager', array(
-		'settings' => 'magazino_slider_pager',
-		'label' => __('Enable pager', 'magazino'),
-		'section' => 'magazino_slider_section',
-		'type' => 'checkbox',
-	));
-
-}
+	}
+endif;
 add_action('customize_register', 'magazino_theme_customizer');
 
 /**
 * Apply Color Scheme
 */
-function magazino_apply_color() {
-	if ( get_theme_mod('magazino_color_settings') ) {
-?>
-	<style>
-		a, a:visited,
-		#site-title a,
-		nav[role=navigation] .menu ul li a:hover,
-		nav[role=navigation] .menu ul li.current-menu-item a, 
-		.nav ul li.current_page_item a, 
-		nav[role=navigation] .menu ul li.current_page_item a,
-		#sidebar .widget-title,
-		.slides .slide-title,
-		.commentlist .vcard cite.fn a,
-		.commentlist .comment-meta a:hover,
-		.post_content ul li:before,
-		.post_content ol li:before,
-		.colortxt,
-		.commentlist .bypostauthor > article > footer > .vcard cite.fn,
-		.cycle-pager span.cycle-pager-active { 
-			color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
+if ( ! function_exists( 'magazino_apply_color' ) ) :
+	function magazino_apply_color() {
+		if ( get_theme_mod('magazino_color_settings') ) {
+	?>
+		<style>
+			a, a:visited,
+			#site-title a,
+			nav[role=navigation] .menu ul li a:hover,
+			nav[role=navigation] .menu ul li.current-menu-item a, 
+			.nav ul li.current_page_item a, 
+			nav[role=navigation] .menu ul li.current_page_item a,
+			#sidebar .widget-title,
+			.slides .slide-title,
+			.commentlist .vcard cite.fn a,
+			.commentlist .comment-meta a:hover,
+			.post_content ul li:before,
+			.post_content ol li:before,
+			.colortxt,
+			.commentlist .bypostauthor > article > footer > .vcard cite.fn,
+			.cycle-pager span.cycle-pager-active { 
+				color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
+			}
+			
+			#container,
+			#sidebar {
+				border-top: 2px solid <?php echo get_theme_mod('magazino_color_settings'); ?>;
+			}
+			
+			#search-box-wrap,
+			#social-media a,
+			#search-icon,
+			.go-button a,
+			.go-button a:visited,
+			.grnbar,
+			.pagination a:hover,
+			.pagination .current,
+			#respond #submit {
+				background-color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
+			}
+			
+			.post_content pre { 
+				border-left-color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
+			}
+		</style>
+	<?php
 		}
-		
-		#container,
-		#sidebar {
-			border-top: 2px solid <?php echo get_theme_mod('magazino_color_settings'); ?>;
-		}
-		
-		#search-box-wrap,
-		#social-media a,
-		#search-icon,
-		.go-button a,
-		.go-button a:visited,
-		.grnbar,
-		.pagination a:hover,
-		.pagination .current,
-		#respond #submit {
-			background-color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
-		}
-		
-		.post_content pre { 
-			border-left-color: <?php echo get_theme_mod('magazino_color_settings'); ?>;
-		}
-	</style>
-<?php
 	}
-}
+endif;
 add_action( 'wp_head', 'magazino_apply_color' );
 
 /**
 * Filter the RSS Feed Site Title
 */
-function magazino_blogname_rss( $val, $show ) {
-    if( 'name' == $show )
-        $out = '';
-    else
-        $out = $val;
-
-    return $out;
-}
+if ( ! function_exists( 'magazino_blogname_rss' ) ) :
+	function magazino_blogname_rss( $val, $show ) {
+		if( 'name' == $show )
+			$out = '';
+		else
+			$out = $val;
+	
+		return $out;
+	}
+endif;
 add_filter('bloginfo_rss', 'magazino_blogname_rss', 10, 2);
 
 
@@ -344,35 +385,39 @@ if ( ! function_exists( 'magazino_main_nav_fallback' ) ) :
 	function magazino_main_nav_fallback() { wp_page_menu( 'show_home=Home&menu_class=menu' ); }
 endif;
 
-
-function magazino_enqueue_comment_reply() {
-        if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-                wp_enqueue_script( 'comment-reply' );
-        }
- }
+if ( ! function_exists( 'magazino_enqueue_comment_reply' ) ) :
+	function magazino_enqueue_comment_reply() {
+			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+					wp_enqueue_script( 'comment-reply' );
+			}
+	 }
+endif;
 add_action( 'comment_form_before', 'magazino_enqueue_comment_reply' );
 
-
-function magazino_page_menu_args( $args ) {
-	$args['show_home'] = true;
-	return $args;
-}
+if ( ! function_exists( 'magazino_page_menu_args' ) ) :
+	function magazino_page_menu_args( $args ) {
+		$args['show_home'] = true;
+		return $args;
+	}
+endif;
 add_filter( 'wp_page_menu_args', 'magazino_page_menu_args' );
 
 /**
  * Register widgetized area and update sidebar with default widgets
  */
-function magazino_widgets_init() {
-	register_sidebar( array(
-		'name' => __( 'Footer Sidebar', 'magazino' ),
-		'id' => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget' => "</aside>",
-		'before_title' => '<div class="widget-title">',
-		'after_title' => '</div>',
-	) );
-
-}
+if ( ! function_exists( 'magazino_widgets_init' ) ) :
+	function magazino_widgets_init() {
+		register_sidebar( array(
+			'name' => __( 'Footer Sidebar', 'magazino' ),
+			'id' => 'sidebar-1',
+			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'after_widget' => "</aside>",
+			'before_title' => '<div class="widget-title">',
+			'after_title' => '</div>',
+		) );
+	
+	}
+endif;
 add_action( 'widgets_init', 'magazino_widgets_init' );
 
 if ( ! function_exists( 'magazino_content_nav' ) ):
@@ -479,64 +524,72 @@ endif;
 /**
  * Adds custom classes to the array of body classes.
  */
-function magazino_body_classes( $classes ) {
-	// Adds a class of single-author to blogs with only 1 published author
-	if ( ! is_multi_author() ) {
-		$classes[] = 'single-author';
+if ( ! function_exists( 'magazino_body_classes' ) ) :
+	function magazino_body_classes( $classes ) {
+		// Adds a class of single-author to blogs with only 1 published author
+		if ( ! is_multi_author() ) {
+			$classes[] = 'single-author';
+		}
+	
+		return $classes;
 	}
-
-	return $classes;
-}
+endif;
 add_filter( 'body_class', 'magazino_body_classes' );
 
 /**
  * Returns true if a blog has more than 1 category
  */
-function magazino_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
-		// Create an array of all the categories that are attached to posts
-		$all_the_cool_cats = get_categories( array(
-			'hide_empty' => 1,
-		) );
-
-		// Count the number of categories that are attached to the posts
-		$all_the_cool_cats = count( $all_the_cool_cats );
-
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+if ( ! function_exists( 'magazino_categorized_blog' ) ) :
+	function magazino_categorized_blog() {
+		if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+			// Create an array of all the categories that are attached to posts
+			$all_the_cool_cats = get_categories( array(
+				'hide_empty' => 1,
+			) );
+	
+			// Count the number of categories that are attached to the posts
+			$all_the_cool_cats = count( $all_the_cool_cats );
+	
+			set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+		}
+	
+		if ( '1' != $all_the_cool_cats ) {
+			// This blog has more than 1 category so magazino_categorized_blog should return true
+			return true;
+		} else {
+			// This blog has only 1 category so magazino_categorized_blog should return false
+			return false;
+		}
 	}
-
-	if ( '1' != $all_the_cool_cats ) {
-		// This blog has more than 1 category so magazino_categorized_blog should return true
-		return true;
-	} else {
-		// This blog has only 1 category so magazino_categorized_blog should return false
-		return false;
-	}
-}
+endif;
 
 /**
  * Flush out the transients used in magazino_categorized_blog
  */
-function magazino_category_transient_flusher() {
-	// Like, beat it. Dig?
-	delete_transient( 'all_the_cool_cats' );
-}
+if ( ! function_exists( 'magazino_category_transient_flusher' ) ) :
+	function magazino_category_transient_flusher() {
+		// Like, beat it. Dig?
+		delete_transient( 'all_the_cool_cats' );
+	}
+endif;
 add_action( 'edit_category', 'magazino_category_transient_flusher' );
 add_action( 'save_post', 'magazino_category_transient_flusher' );
 
 /**
  * Filter in a link to a content ID attribute for the next/previous image links on image attachment pages
  */
-function magazino_enhanced_image_navigation( $url ) {
-	global $post, $wp_rewrite;
-
-	$id = (int) $post->ID;
-	$object = get_post( $id );
-	if ( wp_attachment_is_image( $post->ID ) && ( $wp_rewrite->using_permalinks() && ( $object->post_parent > 0 ) && ( $object->post_parent != $id ) ) )
-		$url = $url . '#main';
-
-	return $url;
-}
+if ( ! function_exists( 'magazino_enhanced_image_navigation' ) ) :
+	function magazino_enhanced_image_navigation( $url ) {
+		global $post, $wp_rewrite;
+	
+		$id = (int) $post->ID;
+		$object = get_post( $id );
+		if ( wp_attachment_is_image( $post->ID ) && ( $wp_rewrite->using_permalinks() && ( $object->post_parent > 0 ) && ( $object->post_parent != $id ) ) )
+			$url = $url . '#main';
+	
+		return $url;
+	}
+endif;
 add_filter( 'attachment_link', 'magazino_enhanced_image_navigation' );
 
 
@@ -579,57 +632,66 @@ function magazino_pagination($pages = '', $range = 4)
 }
 endif;
 
-function magazino_excerpt($limit) {
-	$excerpt = explode(' ', get_the_excerpt(), $limit);
-	if (count($excerpt)>=$limit) {
-	array_pop($excerpt);
-	$excerpt = implode(" ",$excerpt).'...';
-	} else {
-	$excerpt = implode(" ",$excerpt);
-	}	
-	$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-	return $excerpt;
-}
- 
-function magazino_content($limit) {
-	$content = explode(' ', get_the_content(), $limit);
-	if (count($content)>=$limit) {
-	array_pop($content);
-	$content = implode(" ",$content).'...';
-	} else {
-	$content = implode(" ",$content);
-	}	
-	$content = preg_replace('/\[.+\]/','', $content);
-	$content = apply_filters('the_content', $content);
-	$content = str_replace(']]>', ']]&gt;', $content);
-	  return $content;
-}
+if ( ! function_exists( 'magazino_excerpt' ) ) :
+	function magazino_excerpt($limit) {
+		$excerpt = explode(' ', get_the_excerpt(), $limit);
+		if (count($excerpt)>=$limit) {
+		array_pop($excerpt);
+		$excerpt = implode(" ",$excerpt).'...';
+		} else {
+		$excerpt = implode(" ",$excerpt);
+		}	
+		$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+		return $excerpt;
+	}
+endif;
 
-function magazino_w3c_valid_rel( $text ) {
-	$text = str_replace('rel="category tag"', 'rel="tag"', $text); return $text; 
-}
+if ( ! function_exists( 'magazino_content' ) ) :
+	function magazino_content($limit) {
+		$content = explode(' ', get_the_content(), $limit);
+		if (count($content)>=$limit) {
+		array_pop($content);
+		$content = implode(" ",$content).'...';
+		} else {
+		$content = implode(" ",$content);
+		}	
+		$content = preg_replace('/\[.+\]/','', $content);
+		$content = apply_filters('the_content', $content);
+		$content = str_replace(']]>', ']]&gt;', $content);
+		  return $content;
+	}
+endif;
+
+if ( ! function_exists( 'magazino_w3c_valid_rel' ) ) :
+	function magazino_w3c_valid_rel( $text ) {
+		$text = str_replace('rel="category tag"', 'rel="tag"', $text); return $text; 
+	}
+endif;
 add_filter( 'the_category', 'magazino_w3c_valid_rel' );
 
-
-function magazino_modernizr_addclass($output) {
-    return $output . ' class="no-js"';
-}
+if ( ! function_exists( 'magazino_modernizr_addclass' ) ) :
+	function magazino_modernizr_addclass($output) {
+		return $output . ' class="no-js"';
+	}
+endif;
 add_filter('language_attributes', 'magazino_modernizr_addclass');
 
-
-function magazino_modernizr_script() {
-    wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/library/js/modernizr-2.6.2.min.js', false, '2.6.2');
-}    
+if ( ! function_exists( 'magazino_modernizr_script' ) ) :
+	function magazino_modernizr_script() {
+		wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/library/js/modernizr-2.6.2.min.js', false, '2.6.2');
+	} 
+endif;  
 add_action('wp_enqueue_scripts', 'magazino_modernizr_script');
 
-
-function magazino_custom_scripts() {
-	wp_enqueue_script( 'magazino_cycle_js', get_template_directory_uri() . '/library/js/jquery.cycle2.min.js', array( 'jquery' ), '20130202' );
-	wp_enqueue_script( 'magazino_cycle_tile_js', get_template_directory_uri() . '/library/js/jquery.cycle2.tile.min.js', array( 'jquery' ), '20121120' );
-	wp_enqueue_script( 'magazino_cycle_scrollvert_js', get_template_directory_uri() . '/library/js/jquery.cycle2.scrollVert.min.js', array( 'jquery' ), '20121120' );
-	wp_enqueue_script( 'magazino_custom_js', get_template_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '1.0.0' );
-	wp_enqueue_style( 'magazino_style', get_stylesheet_uri() );
-}
+if ( ! function_exists( 'magazino_custom_scripts' ) ) :
+	function magazino_custom_scripts() {
+		wp_enqueue_script( 'magazino_cycle_js', get_template_directory_uri() . '/library/js/jquery.cycle2.min.js', array( 'jquery' ), '20130202' );
+		wp_enqueue_script( 'magazino_cycle_tile_js', get_template_directory_uri() . '/library/js/jquery.cycle2.tile.min.js', array( 'jquery' ), '20121120' );
+		wp_enqueue_script( 'magazino_cycle_scrollvert_js', get_template_directory_uri() . '/library/js/jquery.cycle2.scrollVert.min.js', array( 'jquery' ), '20121120' );
+		wp_enqueue_script( 'magazino_custom_js', get_template_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '1.0.0' );
+		wp_enqueue_style( 'magazino_style', get_stylesheet_uri() );
+	}
+endif;
 add_action('wp_enqueue_scripts', 'magazino_custom_scripts');
 
 ?>

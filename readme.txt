@@ -64,6 +64,12 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.4
+ * added more social media icons options
+ * added a new homepage (full-width) template
+ * unified all the styles into a single stylesheet (style.css)
+ * added function_exists to custom functions
+ 
 Version 1.0.3
  * fixed the bug related to the alignment and resizing of featured images on the slider
  * fixed pixelated thumbnails on homepage posts
@@ -74,7 +80,7 @@ Version 1.0.2
  * the first image used in any post will now be used as the thumbnail image on homepage if no featured image is found
 
 Version 1.0.1
- * added script to the thumbnail resizing on homepage
+ * added script to the thumbnail alignment and resizing on homepage
 
 Version 1.0
  * First public release

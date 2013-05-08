@@ -1,10 +1,15 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template Name: Homepage Template - Full-width
+ * Description: A full-width template with no sidebar
+ */
+get_header(); ?>
 
     <div id="content" class="clearfix">
         
         <div id="main" class="clearfix" role="main">
-        	
-            <div id="slide-wrap">
+        
+        	<div id="slide-wrap">
 			  <?php 
                 $args = array(
                     'posts_per_page' => 10,
@@ -112,56 +117,20 @@
               
               <div class="grnbar"></div>
 
-			<?php 
-				$sticky = get_option("sticky_posts");
-				$fargs = array(
-					'post__not_in' => $sticky,
-					'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1
-				);
-				$rPosts = new WP_Query( $fargs );
-			?>
-			<?php if ( $rPosts->have_posts() ) : ?>
-				<div id="post-boxes-wrap" class="clearfix">
-				<?php /* Start the Loop */ ?>
-				<?php while ( $rPosts->have_posts() ) : $rPosts->the_post(); ?>
-					
-					<?php
-						/* Include the Post-Format-specific template for the content.
-						 * If you want to overload this in a child theme then include a file
-						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-						 */
-						get_template_part( 'content-home', get_post_format() );
-					?>
-                    
-				<?php endwhile; ?>
+				<?php while ( have_posts() ) : the_post(); ?>
+
+				<?php get_template_part( 'content', 'page' ); ?>
                 
-                <?php wp_reset_query(); // reset the query ?>
+                <div class="grnbar"></div>
 
-				<?php if (function_exists("magazino_pagination")) {
-							magazino_pagination(); 
-				} elseif (function_exists("magazino_content_nav")) { 
-							magazino_content_nav( 'nav-below' );
-				}?>
-			</div>
-			<?php else : ?>
+				<?php comments_template( '', true ); ?>
 
-				<article id="post-0" class="post no-results not-found">
-					<header class="entry-header">
-						<h1 class="entry-title"><?php _e( 'Nothing Found', 'magazino' ); ?></h1>
-					</header><!-- .entry-header -->
+				<?php endwhile; // end of the loop. ?>
 
-					<div class="entry-content post_content">
-						<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'magazino' ); ?></p>
-						<?php get_search_form(); ?>
-					</div><!-- .entry-content -->
-				</article><!-- #post-0 -->
-
-			<?php endif; ?>
-
-        </div> <!-- end #main -->
+			</div> <!-- end #main -->
 
         <?php get_sidebar(); ?>
 
     </div> <!-- end #content -->
-        
+
 <?php get_footer(); ?>

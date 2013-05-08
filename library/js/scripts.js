@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
 	
 	
 	/* preloader */
-	$('#loading').hide();
+	$('#load-cycle').hide();
 	
 	/* jquery cycle */
 	$('.cycle-slideshow').show();
