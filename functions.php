@@ -288,6 +288,31 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'section' => 'magazino_slider_section',
 			'type' => 'checkbox',
 		));
+		
+		/* date format options */
+		
+		$wp_customize->add_section( 'magazino_date_format_section' , array(
+			'title'       => __( 'Date Format Options', 'magazino' ),
+			'priority'    => 34,
+			'description' => __( 'Adjust the date format.', 'magazino' ),
+		) );
+		
+		$wp_customize->add_setting( 'magazino_date_format', array(
+			'default' => 'd.m.y',
+			'capability' => 'edit_theme_options',
+		));
+		
+		 $wp_customize->add_control( 'date_format_select_box', array(
+			'settings' => 'magazino_date_format',
+			'label' => __( 'Select Format:', 'magazino' ),
+			'section' => 'magazino_date_format_section',
+			'type' => 'select',
+			'choices' => array(
+				'd.m.y' => '31.01.13 (DD.MM.YY)',
+				'm.d.y' => '01.31.13 (MM.DD.YY)',
+				'F d, Y' => 'January 01, 2013',
+			),
+		));
 	
 	}
 endif;

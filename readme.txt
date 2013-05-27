@@ -64,6 +64,9 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.5
+ * modified the css for the social media buttons to fix the scrollbar issue 
+ 
 Version 1.0.4
  * added more social media icons options
  * added a new homepage (full-width) template

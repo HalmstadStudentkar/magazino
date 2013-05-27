@@ -4,7 +4,14 @@
     <header class="entry-header">
         <?php if ( 'post' == get_post_type() ) : ?>
         <div class="entry-meta">
-            <a href="<?php the_permalink() ?>" rel="bookmark"><?php printf( __('%s', 'magazino'), get_the_date('m.d.y') ); ?></a>
+            <?php
+				if ( get_theme_mod('magazino_date_format') ) {
+					$dformat = get_theme_mod('magazino_date_format');
+				} else {
+					$dformat = 'd.m.y';
+				}
+			?>
+            <a href="<?php the_permalink() ?>" rel="bookmark"><?php printf( __('%s', 'magazino'), get_the_date($dformat) ); ?></a>
         </div><!-- .entry-meta -->
         <?php endif; ?>
         <h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>		
