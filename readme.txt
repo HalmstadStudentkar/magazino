@@ -64,6 +64,9 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.6
+ * added rss button option
+
 Version 1.0.5
  * modified the css for the social media buttons to fix the scrollbar issue 
  

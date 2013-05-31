@@ -163,55 +163,61 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 		$wp_customize->add_section( 'magazino_social_section' , array(
 			'title'       => __( 'Social Media Icons', 'magazino' ),
 			'priority'    => 32,
-			'description' => __( 'Optional facebook icon in the navigation bar', 'magazino' ),
+			'description' => __( 'Optional media icons in the header', 'magazino' ),
 		) );
 		
 		$wp_customize->add_setting( 'magazino_facebook' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_facebook', array(
-			'label'    => __( 'Enter your facebook url', 'magazino' ),
+			'label'    => __( 'Enter your Facebook url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_facebook',
+			'priority'    => 101,
 		) ) );
 	
 		$wp_customize->add_setting( 'magazino_twitter' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_twitter', array(
-			'label'    => __( 'Enter your twitter url', 'magazino' ),
+			'label'    => __( 'Enter your Twitter url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_twitter',
+			'priority'    => 102,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_google' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_google', array(
-			'label'    => __( 'Enter your google+ url', 'magazino' ),
+			'label'    => __( 'Enter your Google+ url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_google',
+			'priority'    => 103,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_pinterest' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_pinterest', array(
-			'label'    => __( 'Enter your pinterest url', 'magazino' ),
+			'label'    => __( 'Enter your Pinterest url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_pinterest',
+			'priority'    => 104,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_linkedin' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_linkedin', array(
-			'label'    => __( 'Enter your linkedin url', 'magazino' ),
+			'label'    => __( 'Enter your Linkedin url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_linkedin',
+			'priority'    => 105,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_youtube' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_youtube', array(
-			'label'    => __( 'Enter your youtube url', 'magazino' ),
+			'label'    => __( 'Enter your Youtube url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_youtube',
+			'priority'    => 106,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_tumblr' );
@@ -220,6 +226,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'label'    => __( 'Enter your Tumblr url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_tumblr',
+			'priority'    => 107,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_instagram' );
@@ -228,6 +235,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'label'    => __( 'Enter your Instagram url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_instagram',
+			'priority'    => 108,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_flickr' );
@@ -236,6 +244,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'label'    => __( 'Enter your Flickr url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_flickr',
+			'priority'    => 109,
 		) ) );
 		
 		$wp_customize->add_setting( 'magazino_vimeo' );
@@ -244,6 +253,16 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'label'    => __( 'Enter your Vimeo url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_vimeo',
+			'priority'    => 110,
+		) ) );
+		
+		$wp_customize->add_setting( 'magazino_rss' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_rss', array(
+			'label'    => __( 'Enter your RSS url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_rss',
+			'priority'    => 111,
 		) ) );
 		
 		/* slider options */

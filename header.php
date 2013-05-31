@@ -71,7 +71,11 @@
             <?php endif; ?>
             
             <?php if ( get_theme_mod( 'magazino_vimeo' ) ) : ?>
-            <a href="<?php echo esc_url( get_theme_mod( 'magazino_flickr' ) ); ?>" class="social-vi" title="<?php echo esc_url( get_theme_mod( 'magazino_vimeo' ) ); ?>"><?php _e('Vimeo', 'magazino') ?></a>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_vimeo' ) ); ?>" class="social-vi" title="<?php echo esc_url( get_theme_mod( 'magazino_vimeo' ) ); ?>"><?php _e('Vimeo', 'magazino') ?></a>
+            <?php endif; ?>
+            
+            <?php if ( get_theme_mod( 'magazino_rss' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_rss' ) ); ?>" class="social-rs" title="<?php echo esc_url( get_theme_mod( 'magazino_rss' ) ); ?>"><?php _e('RSS', 'magazino') ?></a>
             <?php endif; ?>
             
             <div id="search-icon"></div>
