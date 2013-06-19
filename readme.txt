@@ -64,6 +64,9 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.7
+ * added Alt Homepage Template
+
 Version 1.0.6
  * added rss button option
 
