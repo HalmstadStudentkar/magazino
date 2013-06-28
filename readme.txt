@@ -64,6 +64,9 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.8
+ * fixed some css design issues and updated footer
+ 
 Version 1.0.7
  * added Alt Homepage Template
 
