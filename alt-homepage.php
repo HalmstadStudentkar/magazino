@@ -51,15 +51,15 @@ get_header(); ?>
                     <div class="slides">
                       <div id="post-<?php the_ID(); ?>" <?php post_class('post-theme'); ?>>
                          <?php if ( has_post_thumbnail()) : ?>
-                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( array(1000, 640), array( 'style' => 'position:absolute', 'onload' => 'feat_img_onload(this)' ) ); ?></a></div>
+                            <div class="slide-thumb"><?php the_post_thumbnail( array(1000, 640) ); ?></div>
                          <?php else : ?>
                          
 							<?php $postimgs =& get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC' ) );
                             if ( !empty($postimgs) ) :
                                 $firstimg = array_shift( $postimgs );
-                                $my_image = wp_get_attachment_image( $firstimg->ID, array( 1000, 640 ), false, array( 'style' => 'position:absolute', 'onload' => 'feat_img_onload(this)') );
+                                $my_image = wp_get_attachment_image( $firstimg->ID, array( 1000, 640 ), false );
                             ?>
-                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo $my_image; ?></a></div>
+                            <div class="slide-thumb"><?php echo $my_image; ?></div>
                             
                             <?php else : ?>
                          	

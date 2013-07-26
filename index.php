@@ -6,6 +6,7 @@
         	
             <div id="slide-wrap">
 			  <?php 
+			   
                 $args = array(
                     'posts_per_page' => 10,
 					'post_status' => 'publish',
@@ -46,15 +47,15 @@
                     <div class="slides">
                       <div id="post-<?php the_ID(); ?>" <?php post_class('post-theme'); ?>>
                          <?php if ( has_post_thumbnail()) : ?>
-                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_post_thumbnail( array(1000, 640), array( 'style' => 'position:absolute', 'onload' => 'feat_img_onload(this)' ) ); ?></a></div>
+                            <div class="slide-thumb"><?php the_post_thumbnail( array(1000, 640) ); ?></div>
                          <?php else : ?>
                          
 							<?php $postimgs =& get_children( array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC' ) );
                             if ( !empty($postimgs) ) :
                                 $firstimg = array_shift( $postimgs );
-                                $my_image = wp_get_attachment_image( $firstimg->ID, array( 1000, 640 ), false, array( 'style' => 'position:absolute', 'onload' => 'feat_img_onload(this)') );
+                                $my_image = wp_get_attachment_image( $firstimg->ID, array( 1000, 640 ), false );
                             ?>
-                            <div class="slide-thumb"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo $my_image; ?></a></div>
+                            <div class="slide-thumb"><?php echo $my_image; ?></div>
                             
                             <?php else : ?>
                          	
@@ -90,12 +91,12 @@
                   	<div class="slides">
                       <div id="post-<?php the_ID(); ?>" <?php post_class('post-theme'); ?>>
                          <?php if ( has_post_thumbnail()) : ?>
-                            <div class="slide-thumb"><?php the_post_thumbnail( array(1000, 640) ); ?></div>
+                            <div class="slide-thumb" style="background-image:url(<?php $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 1000, 640 ), false, '' ); echo $src[0]; ?>)"></div>
                          <?php else : ?>
                             <div class="slide-noimg"><?php _e('No featured image set for this post.', 'magazino') ?></div>
                          <?php endif; ?>
                          <div class="slide-content">
-                            <h2 class="slide-title"><?php the_title(); ?></h2>
+                            <h2 class="slide-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'magazino' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
                          	<?php echo magazino_excerpt(25); ?>	
                          </div>						
                       </div>
@@ -115,6 +116,7 @@
 			<?php 
 				$sticky = get_option("sticky_posts");
 				$fargs = array(
+					'ignore_sticky_posts' => 1,
 					'post__not_in' => $sticky,
 					'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1
 				);
@@ -135,13 +137,16 @@
                     
 				<?php endwhile; ?>
                 
-                <?php wp_reset_query(); // reset the query ?>
+                
 
 				<?php if (function_exists("magazino_pagination")) {
 							magazino_pagination(); 
 				} elseif (function_exists("magazino_content_nav")) { 
 							magazino_content_nav( 'nav-below' );
 				}?>
+                
+                <?php 
+				wp_reset_postdata(); // reset the query ?>
 			</div>
 			<?php else : ?>
 

@@ -83,7 +83,9 @@ add_action( 'after_setup_theme', 'magazino_content_width' );
  */
 if ( ! function_exists( 'magazino_filter_wp_title' ) ) :
 	function magazino_filter_wp_title( $old_title, $sep, $sep_location ) {
-	
+		
+		if ( is_feed() ) return $old_title;
+		
 		$site_name = get_bloginfo( 'name' );
 		$site_description = get_bloginfo( 'description' );
 		// add padding to the sep
@@ -256,13 +258,22 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 110,
 		) ) );
 		
+		$wp_customize->add_setting( 'magazino_yelp' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_yelp', array(
+			'label'    => __( 'Enter your Yelp url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_yelp',
+			'priority'    => 111,
+		) ) );
+		
 		$wp_customize->add_setting( 'magazino_rss' );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_rss', array(
 			'label'    => __( 'Enter your RSS url', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_rss',
-			'priority'    => 111,
+			'priority'    => 112,
 		) ) );
 		
 		/* slider options */
@@ -389,23 +400,6 @@ if ( ! function_exists( 'magazino_apply_color' ) ) :
 	}
 endif;
 add_action( 'wp_head', 'magazino_apply_color' );
-
-/**
-* Filter the RSS Feed Site Title
-*/
-if ( ! function_exists( 'magazino_blogname_rss' ) ) :
-	function magazino_blogname_rss( $val, $show ) {
-		if( 'name' == $show )
-			$out = '';
-		else
-			$out = $val;
-	
-		return $out;
-	}
-endif;
-add_filter('bloginfo_rss', 'magazino_blogname_rss', 10, 2);
-
-
 
 
 /**

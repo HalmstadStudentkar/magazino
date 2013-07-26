@@ -15,7 +15,7 @@ All the image graphics and icons bundled with this theme are created by the auth
 
 Google webfonts used: Passion One and Fjalla One
 
-Supported browsers: Firefox, Opera, Chrome, Safari and IE9+ (Some css3 styles like shadows and rounded corners are not supported by IE8 and below).
+Supported browsers: Firefox, Opera, Chrome, Safari and IE9+ (Some css3 styles like shadows, rounded corners and 2D transform are not supported by IE8 and below).
 
 For free themes support, please contact us http://wpthemes.co.nz/contact/
 
@@ -64,6 +64,12 @@ This theme is bundled with Cycle2
 =================================
 CHANGELOG
 =================================
+Version 1.0.9
+ * removed the javascript and updated the css for handling and positioning the images in the grid and slider
+ * added Yelp as a social media icon
+ * removed the rss feed title filter in functions.php
+ * added max-width: 100% CSS property on the select element to prevent overflow in sidebar
+ 
 Version 1.0.8
  * fixed some css design issues and updated footer
  
