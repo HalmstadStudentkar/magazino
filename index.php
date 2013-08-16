@@ -91,7 +91,7 @@
                   	<div class="slides">
                       <div id="post-<?php the_ID(); ?>" <?php post_class('post-theme'); ?>>
                          <?php if ( has_post_thumbnail()) : ?>
-                            <div class="slide-thumb" style="background-image:url(<?php $src = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), array( 1000, 640 ), false, '' ); echo $src[0]; ?>)"></div>
+                            <div class="slide-thumb"><?php the_post_thumbnail( array(1000, 640) ); ?></div>
                          <?php else : ?>
                             <div class="slide-noimg"><?php _e('No featured image set for this post.', 'magazino') ?></div>
                          <?php endif; ?>
@@ -115,10 +115,17 @@
 
 			<?php 
 				$sticky = get_option("sticky_posts");
+				if ( get_query_var('paged') ) {
+                        $paged = get_query_var('paged');
+                } elseif ( get_query_var('page') ) {
+                        $paged = get_query_var('page');
+                } else {
+                        $paged = 1;
+                }
 				$fargs = array(
 					'ignore_sticky_posts' => 1,
 					'post__not_in' => $sticky,
-					'paged' => (get_query_var('paged')) ? get_query_var('paged') : 1
+					'paged' => $paged
 				);
 				$rPosts = new WP_Query( $fargs );
 			?>

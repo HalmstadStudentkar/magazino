@@ -23,8 +23,9 @@ IMPORTANT NOTES:
  * Any post set as "Sticky" will be automatically added to the homepage slider.
  * The homepage slider is only activated if there is at least 2 featured/sticky posts.
  * For the slider featured image, the ideal width is at least 1000px and the ideal height is at least 300px. Any part of the featured image that exceeds this dimension will be automatically cropped.
- * The ideal size for the featured image on the homepage grid thumbnails is 300x300 pixels.
- * If there is no featured image set for a post, the first image found will be used instead. This works both for the slider and the grid thumbnails.
+ * If there is no featured image set for a post in the slider, the first image found will be used instead. (This only works for the slider)
+ * If the recommended "Multiple Post Thumbnails" plugin is installed, the secondary featured image will be used by as the the thumbnail for the grid posts. If nothing found (or the plugin is not installed), then the first image attached to the post will be used in the grid posts instead.
+ * The ideal size for the featured image on the homepage grid thumbnails is 300x200 pixels.
  
 
 ============================================
@@ -60,10 +61,28 @@ This theme is bundled with Cycle2
  * Copyright © 2012 M. Alsup (https://github.com/malsup)
  * The Cycle2 plugin is dual licensed under the MIT (http://malsup.github.com/mit-license.txt) and GPL (http://malsup.github.com/gpl-license-v2.txt) licenses.
  
+ 
+================================================
+This theme is bundled with TGM-Plugin-Activation
+================================================
+ * TGM-Plugin-Activation v2.3.6 (https://github.com/thomasgriffin/TGM-Plugin-Activation)
+ * Plugin installation and activation for WordPress themes.
+ * Copyright (c) 2012, Thomas Griffin (thomas@thomasgriffinmedia.com)
+ * http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
+ 
 
 =================================
 CHANGELOG
 =================================
+Version 1.1.0
+ * fixed the responsive dropdown not showing the second, third (and so on) level  submenu items
+ * further enhanced the handling and positioning of the images in the grid and slider
+ * added the TGM plugin activation class to recommend users to install the "Multiple Post Thumbnails" plugin, this will give the users a secondary featured image option for the grid post thumbnails.
+ * the featured image (if set) will only be used in the slider
+ * the grid posts will look for the secondary featured image by default (see the plugin recommended) and use it as thumbnail, if nothing found then the first image attached to the post will be used instead
+ * fixed the image positioning on IE8
+ * updated editor-style.css
+
 Version 1.0.9
  * removed the javascript and updated the css for handling and positioning the images in the grid and slider
  * added Yelp as a social media icon

@@ -1,12 +1,29 @@
 
 jQuery(document).ready(function($){
 	
+	var $window = $(window),
+        $menu = $('div.menu');
+	
+	function checkWindowSize() {
+		var width = $window.width();
+		if ( width < 824 ) {
+			return $menu.addClass('nav-mobile');
+		}
+		$menu.removeClass('nav-mobile');
+	}
+	
+	$window
+        .resize(checkWindowSize)
+        .trigger('checkWindowSize');
+		
+	checkWindowSize();
+	
 	/* prepend menu icon */
 	$('div.menu').prepend('<div id="menu-icon">Menu</div>');
 	
 	/* toggle nav */
 	$("#menu-icon").on("click", function(){
-		$("div.menu ul").slideToggle();
+		$("div.menu > ul").slideToggle();
 		$(this).toggleClass("active");
 	});
 	
@@ -36,11 +53,11 @@ jQuery(document).ready(function($){
 	});
 	
 	$(".post-box").bind("mouseenter", function() {
-		$(this).find(".post-box-img").fadeOut(400);
+		$(this).find("img").fadeOut(400);
 	});
 	
 	$(".post-box").bind("mouseleave", function() {
-		$(this).find(".post-box-img").fadeIn(400);
+		$(this).find("img").fadeIn(400);
 	});
 
 });
