@@ -5,8 +5,8 @@
         <div id="main" class="clearfix" role="main">
         	
             <div id="slide-wrap">
+            
 			  <?php 
-			   
                 $args = array(
                     'posts_per_page' => 10,
 					'post_status' => 'publish',
@@ -144,8 +144,6 @@
                     
 				<?php endwhile; ?>
                 
-                
-
 				<?php if (function_exists("magazino_pagination")) {
 							magazino_pagination(); 
 				} elseif (function_exists("magazino_content_nav")) { 
@@ -154,7 +152,9 @@
                 
                 <?php 
 				wp_reset_postdata(); // reset the query ?>
+                
 			</div>
+            
 			<?php else : ?>
 
 				<article id="post-0" class="post no-results not-found">

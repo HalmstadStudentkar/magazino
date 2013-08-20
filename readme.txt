@@ -74,6 +74,9 @@ This theme is bundled with TGM-Plugin-Activation
 =================================
 CHANGELOG
 =================================
+Version 1.1.1
+ * modified the styles for <ins> and <iframe> tags to fix the yellow bar sometimes appearing above iframe content
+ 
 Version 1.1.0
  * fixed the responsive dropdown not showing the second, third (and so on) level  submenu items
  * further enhanced the handling and positioning of the images in the grid and slider
