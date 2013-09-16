@@ -278,6 +278,15 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 112,
 		) ) );
 		
+		$wp_customize->add_setting( 'magazino_email' );
+		
+		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_email', array(
+			'label'    => __( 'Enter your Mailto url', 'magazino' ),
+			'section'  => 'magazino_social_section',
+			'settings' => 'magazino_email',
+			'priority'    => 113,
+		) ) );
+		
 		/* slider options */
 		
 		$wp_customize->add_section( 'magazino_slider_section' , array(

@@ -82,6 +82,10 @@
             <a href="<?php echo esc_url( get_theme_mod( 'magazino_rss' ) ); ?>" class="social-rs" title="<?php echo esc_url( get_theme_mod( 'magazino_rss' ) ); ?>"><?php _e('RSS', 'magazino') ?></a>
             <?php endif; ?>
             
+            <?php if ( get_theme_mod( 'magazino_email' ) ) : ?>
+            <a href="<?php echo esc_url( get_theme_mod( 'magazino_email' ) ); ?>" class="social-em" title="<?php echo esc_url( get_theme_mod( 'magazino_email' ) ); ?>"><?php _e('Email', 'magazino') ?></a>
+            <?php endif; ?>
+            
             <div id="search-icon"></div>
             
         </div>

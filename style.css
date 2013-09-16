@@ -4,7 +4,7 @@ Theme URI: http://wpthemes.co.nz/magazino/
 Author: WPThemes NZ
 Author URI: http://wpthemes.co.nz/
 Description: Magazino is a simple and flexible theme ideally suited to magazine style blogs. It is responsive to browser size so should look good on any screen. It supports all the usual WordPress features like custom menus and widgets, and also makes it easy to customize with your own logo and you can set the main color scheme to any color you want with the built in color picker.
-Version: 1.1.1
+Version: 1.1.2
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom-menu, sticky-post, microformats, rtl-language-support, translation-ready, full-width-template, post-formats
@@ -716,6 +716,10 @@ SOCIAL MEDIA BUTTONS STYLES
 	
 	#social-media a.social-rs {
 		background-image: url(library/images/icon-rss.png);
+	}
+	
+	#social-media a.social-em {
+		background-image: url(library/images/icon-email.png);
 	}
 	
 	#search-icon {
@@ -2645,7 +2649,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup/
 		box-shadow: 1px 1px 1px #000;
 		position: absolute; 
 		z-index: 9999; 
-		width: 220px; 
+		width: 250px; 
 		word-wrap: break-word;
 		display: none;
 		overflow: visible;
@@ -2682,33 +2686,45 @@ URL: http://stuffandnonsense.co.uk/projects/320andup/
 		box-sizing: border-box;
 		
 	}
-
-	
-	nav[role=navigation] .menu.nav-mobile ul li.current-menu-item a, 
-	nav[role=navigation] .menu.nav-mobile ul li.current_page_item a {
-		background: #f5f5f5;
-	}
 	
 	nav[role=navigation] .menu.nav-mobile ul li a:hover,
 	nav[role=navigation] .menu.nav-mobile ul li.current-menu-item a:hover, 
 	nav[role=navigation] .menu.nav-mobile ul li.current_page_item a:hover {
 		background: #eaeaea;
 	}
-
 	
-	nav[role=navigation] .menu.nav-mobile > ul li ul.sub-menu, 
-	nav[role=navigation] .menu.nav-mobile > ul li ul.children {
+	nav[role=navigation] .menu.nav-mobile ul li > ul.sub-menu, 
+	nav[role=navigation] .menu.nav-mobile ul li > ul.children,
+	nav[role=navigation] .menu.nav-mobile ul li ul.sub-menu li ul, 
+	nav[role=navigation] .menu.nav-mobile ul li ul.children li ul {
+		background: #f5f5f5;
+		display: block;
+		position: relative;
 		z-index: 9999; 
-		right: -200px;
+		right: auto;
 		top: auto;
-		margin-top: -40px;
-		width: 200px;
+		margin-top: 0;
+		width: 100%;
+		box-shadow: none;
 	}
 	
-	.menu.nav-mobile ul li ul li ul li:hover > ul.sub-menu, 
-	.menu.nav-mobile ul li ul li ul li:hover > ul.children { 
-		display: none;
-	}
+		nav[role=navigation] .menu.nav-mobile ul li ul.sub-menu li, 
+		nav[role=navigation] .menu.nav-mobile ul li ul.children li {
+			border: 0;
+			border-top: 1px solid #e3e3e3;
+			text-indent: 20px;	
+		}
+		
+			nav[role=navigation] .menu.nav-mobile ul li ul.sub-menu li ul li, 
+			nav[role=navigation] .menu.nav-mobile ul li ul.children li ul li {
+				text-indent: 40px;
+			}
+			
+				nav[role=navigation] .menu.nav-mobile ul li ul.sub-menu li ul li ul li, 
+				nav[role=navigation] .menu.nav-mobile ul li ul.children li ul li ul li {
+					text-indent: 60px;
+				}
+
 	
 	#main.col620 {
 		width: 100%;
@@ -2835,11 +2851,6 @@ URL: http://stuffandnonsense.co.uk/projects/320andup/
 
 @media only screen and (max-width: 624px) {
 	
-	.menu.nav-mobile ul li ul li:hover > ul.sub-menu, 
-	.menu.nav-mobile ul li ul li:hover > ul.children { 
-		display: none;
-	}
-	
 	article[id*=post-].post-box {
 		width: 42.2%;
 	}
@@ -2887,11 +2898,6 @@ URL: http://stuffandnonsense.co.uk/projects/320andup/
 
 @media only screen and (max-width: 346px) {
 	
-	.menu.nav-mobile ul li:hover > ul.sub-menu, 
-	.menu.nav-mobile ul li:hover > ul.children { 
-		display: none;
-	}
-	
 	article[id*=post-].post-box {
 		width: 85%;
 		margin-right: 0;
@@ -2902,6 +2908,7 @@ URL: http://stuffandnonsense.co.uk/projects/320andup/
 		max-width: 130px;	
 	}
 }
+
 
 /******************************************************************
 PRINT STYLES

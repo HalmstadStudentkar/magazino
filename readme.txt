@@ -74,6 +74,10 @@ This theme is bundled with TGM-Plugin-Activation
 =================================
 CHANGELOG
 =================================
+Version 1.1.2
+ * added mailto icon to the social media buttons
+ * modified the css for the menu dropdown on mobile screen, the submenu items now display as indented menu links
+ 
 Version 1.1.1
  * modified the styles for <ins> and <iframe> tags to fix the yellow bar sometimes appearing above iframe content
  
