@@ -74,6 +74,10 @@ This theme is bundled with TGM-Plugin-Activation
 =================================
 CHANGELOG
 =================================
+Version 1.1.3
+ * removed a function that sometimes causes all the images in the media library to not display at all when setting a featured image
+ * replaced the screenshot with 880x660 size
+ 
 Version 1.1.2
  * added mailto icon to the social media buttons
  * modified the css for the menu dropdown on mobile screen, the submenu items now display as indented menu links

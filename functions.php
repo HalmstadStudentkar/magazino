@@ -624,22 +624,7 @@ endif;
 add_action( 'edit_category', 'magazino_category_transient_flusher' );
 add_action( 'save_post', 'magazino_category_transient_flusher' );
 
-/**
- * Filter in a link to a content ID attribute for the next/previous image links on image attachment pages
- */
-if ( ! function_exists( 'magazino_enhanced_image_navigation' ) ) :
-	function magazino_enhanced_image_navigation( $url ) {
-		global $post, $wp_rewrite;
-	
-		$id = (int) $post->ID;
-		$object = get_post( $id );
-		if ( wp_attachment_is_image( $post->ID ) && ( $wp_rewrite->using_permalinks() && ( $object->post_parent > 0 ) && ( $object->post_parent != $id ) ) )
-			$url = $url . '#main';
-	
-		return $url;
-	}
-endif;
-add_filter( 'attachment_link', 'magazino_enhanced_image_navigation' );
+
 
 
 if ( ! function_exists( 'magazino_pagination' ) ) :
