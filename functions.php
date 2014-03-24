@@ -138,6 +138,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 		/* color scheme option */
 		$wp_customize->add_setting( 'magazino_color_settings', array (
 			'default'	=> '#9dbb41',
+			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'magazino_color_settings', array(
@@ -154,7 +155,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'description' => __( 'Upload a logo to replace the default site name in the header', 'magazino' ),
 		) );
 		
-		$wp_customize->add_setting( 'magazino_logo' );
+		$wp_customize->add_setting( 'magazino_logo', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'magazino_logo', array(
 			'label'    => __( 'Choose your logo (ideal width is 100-300px and ideal height is 40-100px)', 'magazino' ),
@@ -170,7 +173,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'description' => __( 'Optional media icons in the header', 'magazino' ),
 		) );
 		
-		$wp_customize->add_setting( 'magazino_facebook' );
+		$wp_customize->add_setting( 'magazino_facebook', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_facebook', array(
 			'label'    => __( 'Enter your Facebook url', 'magazino' ),
@@ -179,7 +184,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 101,
 		) ) );
 	
-		$wp_customize->add_setting( 'magazino_twitter' );
+		$wp_customize->add_setting( 'magazino_twitter', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_twitter', array(
 			'label'    => __( 'Enter your Twitter url', 'magazino' ),
@@ -188,7 +195,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 102,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_google' );
+		$wp_customize->add_setting( 'magazino_google', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_google', array(
 			'label'    => __( 'Enter your Google+ url', 'magazino' ),
@@ -197,7 +206,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 103,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_pinterest' );
+		$wp_customize->add_setting( 'magazino_pinterest', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_pinterest', array(
 			'label'    => __( 'Enter your Pinterest url', 'magazino' ),
@@ -206,7 +217,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 104,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_linkedin' );
+		$wp_customize->add_setting( 'magazino_linkedin', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_linkedin', array(
 			'label'    => __( 'Enter your Linkedin url', 'magazino' ),
@@ -215,7 +228,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 105,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_youtube' );
+		$wp_customize->add_setting( 'magazino_youtube', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_youtube', array(
 			'label'    => __( 'Enter your Youtube url', 'magazino' ),
@@ -224,7 +239,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 106,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_tumblr' );
+		$wp_customize->add_setting( 'magazino_tumblr', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_tumblr', array(
 			'label'    => __( 'Enter your Tumblr url', 'magazino' ),
@@ -233,7 +250,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 107,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_instagram' );
+		$wp_customize->add_setting( 'magazino_instagram', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_instagram', array(
 			'label'    => __( 'Enter your Instagram url', 'magazino' ),
@@ -242,7 +261,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 108,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_flickr' );
+		$wp_customize->add_setting( 'magazino_flickr', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_flickr', array(
 			'label'    => __( 'Enter your Flickr url', 'magazino' ),
@@ -251,7 +272,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 109,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_vimeo' );
+		$wp_customize->add_setting( 'magazino_vimeo', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_vimeo', array(
 			'label'    => __( 'Enter your Vimeo url', 'magazino' ),
@@ -260,7 +283,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 110,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_yelp' );
+		$wp_customize->add_setting( 'magazino_yelp', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_yelp', array(
 			'label'    => __( 'Enter your Yelp url', 'magazino' ),
@@ -269,7 +294,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 111,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_rss' );
+		$wp_customize->add_setting( 'magazino_rss', array (
+			'sanitize_callback' => 'esc_url_raw',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_rss', array(
 			'label'    => __( 'Enter your RSS url', 'magazino' ),
@@ -278,10 +305,12 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'priority'    => 112,
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_email' );
+		$wp_customize->add_setting( 'magazino_email', array (
+			'sanitize_callback' => 'sanitize_email',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_email', array(
-			'label'    => __( 'Enter your Mailto url', 'magazino' ),
+			'label'    => __( 'Enter your email address', 'magazino' ),
 			'section'  => 'magazino_social_section',
 			'settings' => 'magazino_email',
 			'priority'    => 113,
@@ -298,6 +327,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 		$wp_customize->add_setting( 'magazino_slider_effect', array(
 			'default' => 'scrollHorz',
 			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
 		));
 		
 		 $wp_customize->add_control( 'effect_select_box', array(
@@ -313,7 +343,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			),
 		));
 		
-		$wp_customize->add_setting( 'magazino_slider_timeout' );
+		$wp_customize->add_setting( 'magazino_slider_timeout', array (
+			'sanitize_callback' => 'magazino_sanitize_integer',
+		) );
 		
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'magazino_slider_timeout', array(
 			'label'    => __( 'Autoplay Speed in Seconds (0 for Manual)', 'magazino' ),
@@ -321,7 +353,9 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 			'settings' => 'magazino_slider_timeout',
 		) ) );
 		
-		$wp_customize->add_setting( 'magazino_slider_pager' );
+		$wp_customize->add_setting( 'magazino_slider_pager', array (
+			'sanitize_callback' => 'magazino_sanitize_checkbox',
+		) );
 		
 		 $wp_customize->add_control('enable_pager', array(
 			'settings' => 'magazino_slider_pager',
@@ -341,6 +375,7 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 		$wp_customize->add_setting( 'magazino_date_format', array(
 			'default' => 'd.m.y',
 			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'sanitize_text_field',
 		));
 		
 		 $wp_customize->add_control( 'date_format_select_box', array(
@@ -358,6 +393,30 @@ if ( ! function_exists( 'magazino_theme_customizer' ) ) :
 	}
 endif;
 add_action('customize_register', 'magazino_theme_customizer');
+
+
+/**
+ * Sanitize checkbox
+ */
+if ( ! function_exists( 'magazino_sanitize_checkbox' ) ) :
+	function magazino_sanitize_checkbox( $input ) {
+		if ( $input == 1 ) {
+			return 1;
+		} else {
+			return '';
+		}
+	}
+endif;
+
+
+/**
+ * Sanitize integer input
+ */
+if ( ! function_exists( 'magazino_sanitize_integer' ) ) :
+	function magazino_sanitize_integer( $input ) {
+		return absint($input);
+	}
+endif;
 
 /**
 * Apply Color Scheme

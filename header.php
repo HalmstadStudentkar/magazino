@@ -83,7 +83,7 @@
             <?php endif; ?>
             
             <?php if ( get_theme_mod( 'magazino_email' ) ) : ?>
-            <a href="<?php echo esc_url( get_theme_mod( 'magazino_email' ) ); ?>" class="social-em" title="<?php echo esc_url( get_theme_mod( 'magazino_email' ) ); ?>"><?php _e('Email', 'magazino') ?></a>
+            <a href="<?php _e('mailto:', 'magazino'); echo sanitize_email( get_theme_mod( 'magazino_email' ) ); ?>" class="social-em" title="<?php _e('mailto:', 'magazino'); echo sanitize_email( get_theme_mod( 'magazino_email' ) ); ?>"><?php _e('Email', 'magazino') ?></a>
             <?php endif; ?>
             
             <div id="search-icon"></div>

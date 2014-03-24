@@ -74,6 +74,10 @@ This theme is bundled with TGM-Plugin-Activation
 =================================
 CHANGELOG
 =================================
+Version 1.1.4
+ * added sanitize callbacks to Customizer options
+ * modified the email social icon to use the correct mailto protocol instead of http
+ 
 Version 1.1.3
  * removed a function that sometimes causes all the images in the media library to not display at all when setting a featured image
  * replaced the screenshot with 880x660 size
