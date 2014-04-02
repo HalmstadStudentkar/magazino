@@ -4,7 +4,7 @@ Theme URI: http://wpthemes.co.nz/magazino/
 Author: WPThemes NZ
 Author URI: http://wpthemes.co.nz/
 Description: Magazino is a simple and flexible theme ideally suited to magazine style blogs. It is responsive to browser size so should look good on any screen. It supports all the usual WordPress features like custom menus and widgets, and also makes it easy to customize with your own logo and you can set the main color scheme to any color you want with the built in color picker.
-Version: 1.1.4
+Version: 1.1.5
 License: GNU General Public License v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: custom-menu, sticky-post, microformats, rtl-language-support, translation-ready, full-width-template, post-formats
@@ -115,13 +115,16 @@ input,
 textarea, 
 button { 
 	font: 99% sans-serif;
-	-webkit-appearance: none;
 	border-radius: 0;
 }
 	select {
 		max-width: 100%;
 	}
-
+	
+	input[type=search] {
+	  -webkit-appearance: none;
+	}
+	
 body, 
 select, 
 input, 
@@ -1439,7 +1442,15 @@ POSTS & CONTENT STYLES
 					font-size: 14px;
 				}
 				
-			.post_content ol li {}
+			.post_content form ul li,
+			.post_content form ol li {
+				padding-left: 0;
+			}
+				
+			.post_content form ul li:before,
+			.post_content form ol li:before {
+				display: none;
+			}
 			
 			.commentlist li.comment article[id*=comment-] blockquote, 
 			.post_content blockquote { 

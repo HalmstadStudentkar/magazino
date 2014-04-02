@@ -74,6 +74,9 @@ This theme is bundled with TGM-Plugin-Activation
 =================================
 CHANGELOG
 =================================
+Version 1.1.5
+  * fixed the issue on webkit browsers where the form inputs/elements are being displayed incorrectly.
+  
 Version 1.1.4
  * added sanitize callbacks to Customizer options
  * modified the email social icon to use the correct mailto protocol instead of http
